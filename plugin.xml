@@ -6,7 +6,7 @@
     <keywords>CleverTap</keywords>
 
     <js-module src="www/CleverTap.js" name="CleverTap">
-        <clobbers target="CleverTap" />
+        <clobbers target="cordova.plugins.CleverTap" />
     </js-module>
 
     <preference name="CLEVERTAP_ACCOUNT_ID" />
@@ -14,7 +14,7 @@
     <preference name="CLEVERTAP_REGION" default=" "/>
 
     <platform name="ios">
-		
+
         <config-file target="*-Info.plist" parent="CleverTapAccountID">
             <string>$CLEVERTAP_ACCOUNT_ID</string>
         </config-file>
@@ -27,12 +27,12 @@
             <string>$CLEVERTAP_REGION</string>
         </config-file>
 
-		<config-file parent="aps-environment" target="*/Entitlements-Debug.plist">
-		    <string>development</string>
-		</config-file>
-		<config-file parent="aps-environment" target="*/Entitlements-Release.plist">
-			<string>production</string>
-		</config-file>
+        <config-file parent="aps-environment" target="*/Entitlements-Debug.plist">
+            <string>development</string>
+        </config-file>
+        <config-file parent="aps-environment" target="*/Entitlements-Release.plist">
+            <string>production</string>
+        </config-file>
 
         <config-file target="config.xml" parent="/*">
             <feature name="CleverTapPlugin">
@@ -49,12 +49,12 @@
                 <pod name="CleverTap-iOS-SDK" spec="6.2.1" />
             </pods>
         </podspec>
-<!--        <framework src="CleverTap-iOS-SDK" type="podspec" spec="5.1.2" />-->
+        <!--        <framework src="CleverTap-iOS-SDK" type="podspec" spec="5.1.2" />-->
         <header-file src="src/ios/AppDelegate+CleverTapPlugin.h" />
         <source-file src="src/ios/AppDelegate+CleverTapPlugin.m" />
         <header-file src="src/ios/CleverTapPlugin.h" />
         <source-file src="src/ios/CleverTapPlugin.m" />
-        
+
     </platform>
 
     <platform name="android">
@@ -72,7 +72,7 @@
             <uses-permission android:name="android.permission.WAKE_LOCK" />
         </config-file>
 
-		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <service
                 android:exported="true"
                 android:name="com.clevertap.android.sdk.pushnotification.fcm.FcmMessageListenerService">
@@ -80,7 +80,7 @@
                     <action android:name="com.google.firebase.MESSAGING_EVENT"/>
                 </intent-filter>
             </service>
-            
+
             <service
                 android:name="com.clevertap.android.sdk.pushnotification.CTNotificationIntentService"
                 android:exported="false">
@@ -98,7 +98,7 @@
                 android:exported="false"
                 android:enabled="true">
             </receiver>
-		</config-file>
+        </config-file>
 
         <source-file src="src/android/google-services.json" target-dir="." />
         <source-file src="src/android/CleverTapPlugin.java" target-dir="src/com/clevertap/cordova/" />
